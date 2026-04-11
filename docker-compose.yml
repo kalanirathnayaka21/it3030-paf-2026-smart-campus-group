@@ -7,10 +7,10 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - SPRING_DATASOURCE_URL=postgresql://postgres:wWUS0O4QgAiG9O5v@db.wlgqnrxywovrrjkzpnmb.supabase.co:5432/postgres
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db.wlgqnrxyovrrjkzpnmb.supabase.co:5432/postgres
       - SPRING_DATASOURCE_USERNAME=postgres
       # NOTE: Change 'your_password' to your actual database password
-      - SPRING_DATASOURCE_PASSWORD=your_password
+      - SPRING_DATASOURCE_PASSWORD=wlgqnrxyovrrjkzpnmb
     restart: always
 
   frontend:
