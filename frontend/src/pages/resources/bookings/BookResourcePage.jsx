@@ -37,6 +37,7 @@ export default function BookResourcePage() {
       setError('End time must be after start time.')
       return
     }
+    // Send booking request
     setSaving(true)
     try {
       await api.post('/bookings', {
@@ -46,6 +47,7 @@ export default function BookResourcePage() {
         purpose: form.purpose,
         attendees: Number(form.attendees),
       })
+      // If success → show success screen
       setSuccess(true)
     } catch (err) {
       setError(err.response?.data?.error || 'Booking failed. Please try again.')
@@ -92,7 +94,7 @@ export default function BookResourcePage() {
             </div>
           </div>
         )}
-
+        {/* Booking form */}
         {!loading && !success && resource && (
           <>
             <div className="page-header">
