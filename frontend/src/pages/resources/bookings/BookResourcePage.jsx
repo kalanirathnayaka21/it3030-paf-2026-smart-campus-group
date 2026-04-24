@@ -4,18 +4,18 @@ import api from '../../api/api'
 import { TYPE_META } from '../../components/resources/ResourceCard'
 
 export default function BookResourcePage() {
-  const { id }    = useParams()
-  const navigate  = useNavigate()
+  const { id } = useParams()
+  const navigate = useNavigate()
   const [resource, setResource] = useState(null)
-  const [loading, setLoading]   = useState(true)
-  const [saving,  setSaving]    = useState(false)
-  const [error,   setError]     = useState('')
-  const [success, setSuccess]   = useState(false)
-
+  const [loading, setLoading] = useState(true)
+  const [saving, setSaving] = useState(false)
+  const [error, setError] = useState('')
+  const [success, setSuccess] = useState(false)
+  //Form data
   const [form, setForm] = useState({
     startTime: '', endTime: '', purpose: '', attendees: 1,
   })
-
+  // Fetch resource when page loads
   useEffect(() => {
     api.get(`/resources/${id}`)
       .then(res => setResource(res.data))
@@ -40,10 +40,10 @@ export default function BookResourcePage() {
     try {
       await api.post('/bookings', {
         resourceId: id,
-        startTime:  form.startTime,
-        endTime:    form.endTime,
-        purpose:    form.purpose,
-        attendees:  Number(form.attendees),
+        startTime: form.startTime,
+        endTime: form.endTime,
+        purpose: form.purpose,
+        attendees: Number(form.attendees),
       })
       setSuccess(true)
     } catch (err) {
