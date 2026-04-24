@@ -1,11 +1,11 @@
 import { useState, useEffect, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import api from '../../api/api'
-
+// Status colors
 const STATUS_STYLE = {
-  PENDING:   { bg: 'rgba(245,158,11,0.15)',  text: '#fbbf24', border: 'rgba(245,158,11,0.35)' },
-  APPROVED:  { bg: 'rgba(16,185,129,0.15)',  text: '#34d399', border: 'rgba(16,185,129,0.35)' },
-  REJECTED:  { bg: 'rgba(244,63,94,0.12)',   text: '#f87171', border: 'rgba(244,63,94,0.3)'   },
+  PENDING: { bg: 'rgba(245,158,11,0.15)', text: '#fbbf24', border: 'rgba(245,158,11,0.35)' },
+  APPROVED: { bg: 'rgba(16,185,129,0.15)', text: '#34d399', border: 'rgba(16,185,129,0.35)' },
+  REJECTED: { bg: 'rgba(244,63,94,0.12)', text: '#f87171', border: 'rgba(244,63,94,0.3)' },
   CANCELLED: { bg: 'rgba(100,116,139,0.15)', text: '#94a3b8', border: 'rgba(100,116,139,0.3)' },
 }
 
@@ -17,8 +17,8 @@ function fmt(dt) {
 
 export default function MyBookingsPage() {
   const [bookings, setBookings] = useState([])
-  const [loading, setLoading]   = useState(true)
-  const [error, setError]       = useState('')
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
 
   const load = useCallback(async () => {
     setLoading(true)
@@ -26,7 +26,7 @@ export default function MyBookingsPage() {
       const res = await api.get('/bookings/my')
       setBookings(res.data)
     } catch { setError('Failed to load bookings.') }
-    finally  { setLoading(false) }
+    finally { setLoading(false) }
   }, [])
 
   useEffect(() => { load() }, [load])
