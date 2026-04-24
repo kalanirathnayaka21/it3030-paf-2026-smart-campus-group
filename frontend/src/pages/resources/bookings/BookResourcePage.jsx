@@ -145,7 +145,7 @@ export default function BookResourcePage() {
             </div>
           </>
         )}
-
+        {/* Resource not found */}
         {!loading && !success && !resource && (
           <div className="empty-state">
             <div style={{ fontSize: '3rem' }}>❌</div>
