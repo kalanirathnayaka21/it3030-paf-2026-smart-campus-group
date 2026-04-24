@@ -24,7 +24,7 @@ export default function BookResourcePage() {
   }, [id])
 
   const set = (field) => (e) => setForm(f => ({ ...f, [field]: e.target.value }))
-
+  // Validation
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError('')
@@ -32,6 +32,7 @@ export default function BookResourcePage() {
       setError('Please fill all required fields.')
       return
     }
+    // Check time validity
     if (new Date(form.endTime) <= new Date(form.startTime)) {
       setError('End time must be after start time.')
       return
